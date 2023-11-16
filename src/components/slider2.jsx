@@ -55,10 +55,7 @@ const slider2 = () => {
       console.log("Slider value:", sliderValue);
     }
   };
-  const handleClick = () => {
-    dispatch({ type: "ADD_ITEM2", payload: sliderVal * 250000 });
-    console.log(state.shelf2);
-  };
+
   return (
     <div
       className="slider-container"
@@ -83,7 +80,6 @@ const slider2 = () => {
       <div className="cloud">
         <img src="https://i.ibb.co/8BTDB1L/Vector-5.png" />
       </div>
-      <button onClick={handleClick}>send</button>
     </div>
   );
 };

@@ -7,6 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 .Content {
   width: 70%;
@@ -104,4 +106,31 @@
 }
 .cloud {
   margin-top: 30px;
+}
+.button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
+  padding-bottom: 50px;
+  font-size: 50px;
+  background: #d3e8f4;
+}
+.back-btn {
+  margin-right: 20px;
+  border: 3px solid #78909c;
+  border-radius: 20px;
+  padding: 5px 20px;
+  font-size: 25px;
+  cursor: pointer;
+}
+.send-btn {
+  color: white;
+  background: #14a351;
+  border-radius: 20px;
+  border: none;
+  padding: 5px 20px;
+  font-size: 25px;
+  cursor: pointer;
 }
