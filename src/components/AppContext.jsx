@@ -12,7 +12,7 @@ const AppContext = createContext();
 const appReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM1":
-      return { ...state, shelf1: [...state.shelf1, action.payload] };
+      return { ...state, shelf1: [action.payload] };
     case "ADD_ITEM2":
       return { ...state, shelf2: [...state.shelf2, action.payload] };
     case "ADD_ITEM3":

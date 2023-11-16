@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useAppContext } from "./AppContext";
+import { FaInfo } from "react-icons/fa6";
+import { FiLink } from "react-icons/fi";
 import "../global.scss";
 
 const slider2 = () => {
@@ -79,6 +81,13 @@ const slider2 = () => {
       </div>
       <div className="cloud">
         <img src="https://i.ibb.co/8BTDB1L/Vector-5.png" />
+        <p>LÁMPÁS `92 ALAPITVÁNY</p>
+        <div className="info">
+          <FaInfo />
+        </div>
+        <div className="link">
+          <FiLink />
+        </div>
       </div>
     </div>
   );

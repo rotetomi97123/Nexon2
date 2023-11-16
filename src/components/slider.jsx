@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useAppContext } from "./AppContext";
+import { FaInfo } from "react-icons/fa6";
+import { FiLink } from "react-icons/fi";
 import "../global.scss";
 
 const slider = () => {
@@ -51,9 +53,11 @@ const slider = () => {
       // Map the nearest spot to a value from 0 to 10
       const sliderValue = calculateSliderValue(nearestSpot);
       setSliderVal(sliderValue);
+
       // Log the slider value
-      console.log("Slider value:", sliderValue);
     }
+    dispatch({ type: "ADD_ITEM1", payload: sliderVal * 250000 });
+    console.log(state.shelf1);
   };
 
   return (
@@ -79,6 +83,13 @@ const slider = () => {
       </div>
       <div className="cloud">
         <img src="https://i.ibb.co/8jVs5SS/Vector-4.png" />
+        <p>Autizmus alapitvány</p>
+        <div className="info">
+          <FaInfo />
+        </div>
+        <div className="link">
+          <FiLink />
+        </div>
       </div>
     </div>
   );
