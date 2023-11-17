@@ -47,17 +47,16 @@ const slider = () => {
         Math.abs(curr - position) < Math.abs(prev - position) ? curr : prev
       );
       setPosition(nearestSpot);
+      const sliderValue = calculateSliderValue(nearestSpot);
+      dispatch({ type: "ADD_ITEM1", payload: sliderValue * 250000 });
 
       setIsDragging(false);
 
       // Map the nearest spot to a value from 0 to 10
-      const sliderValue = calculateSliderValue(nearestSpot);
       setSliderVal(sliderValue);
 
       // Log the slider value
     }
-    dispatch({ type: "ADD_ITEM1", payload: sliderVal * 250000 });
-    console.log(state.shelf1);
   };
 
   return (

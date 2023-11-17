@@ -174,3 +174,16 @@
   top: 35%;
   left: 100px;
 }
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
+  padding-bottom: 50px;
+  font-size: 50px;
+  background: #d3e8f4;
+}
+.form-input {
+  display: none;
+}

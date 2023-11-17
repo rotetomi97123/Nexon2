@@ -14,11 +14,11 @@ const appReducer = (state, action) => {
     case "ADD_ITEM1":
       return { ...state, shelf1: [action.payload] };
     case "ADD_ITEM2":
-      return { ...state, shelf2: [...state.shelf2, action.payload] };
+      return { ...state, shelf2: [action.payload] };
     case "ADD_ITEM3":
-      return { ...state, shelf3: [...state.shelf3, action.payload] };
+      return { ...state, shelf3: [action.payload] };
     case "ADD_ITEM4":
-      return { ...state, shelf4: [...state.shelf4, action.payload] };
+      return { ...state, shelf4: [action.payload] };
     case "REMOVE-ITEM":
       const updatedSweaters = state.sweaters.map((item) =>
         item === action.payload ? { ...item, removed: false } : item

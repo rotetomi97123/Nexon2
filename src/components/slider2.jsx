@@ -47,11 +47,11 @@ const slider2 = () => {
         Math.abs(curr - position) < Math.abs(prev - position) ? curr : prev
       );
       setPosition(nearestSpot);
-
+      const sliderValue = calculateSliderValue(nearestSpot);
+      dispatch({ type: "ADD_ITEM2", payload: sliderValue * 250000 });
       setIsDragging(false);
 
       // Map the nearest spot to a value from 0 to 10
-      const sliderValue = calculateSliderValue(nearestSpot);
       setSliderVal(sliderValue);
       // Log the slider value
       console.log("Slider value:", sliderValue);
