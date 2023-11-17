@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAppContext } from "./AppContext";
 
-const Submit = () => {
+const Submit = ({ setPosition, setPosition2, setPosition3, setPosition4 }) => {
   const { state, dispatch } = useAppContext();
 
   function Submit(e) {
@@ -17,22 +17,34 @@ const Submit = () => {
       }
     );
   }
-  const [resultState, setResultState] = useState(0);
+  const [buttonBackgroundColor, setButtonBackgroundColor] = useState("");
+  const [active, setActive] = useState(false);
   useEffect(() => {
-    // Check if all four states are equal to 0
-    if (
-      state.shelf1 === 0 &&
-      state.shelf2 === 0 &&
-      state.shelf3 === 0 &&
-      state.shelf4 === 0
-    ) {
-      // If true, set the resultState to 0
-      setResultState(0);
+    const allArraysEmptyOrZeros =
+      state.shelf1.every((value) => value === 0) &&
+      state.shelf2.every((value) => value === 0) &&
+      state.shelf3.every((value) => value === 0) &&
+      state.shelf4.every((value) => value === 0);
+
+    if (allArraysEmptyOrZeros) {
+      setButtonBackgroundColor("grey");
+      setActive(false);
     } else {
-      // If false, update the resultState with some other logic if needed
-      setResultState(1);
+      setButtonBackgroundColor("green");
+      setActive(true);
     }
   }, [state.shelf1, state.shelf2, state.shelf3, state.shelf4]);
+
+  const restart = () => {
+    setPosition(0);
+    setPosition2(0);
+    setPosition3(0);
+    setPosition4(0);
+    dispatch({ type: "ADD_ITEM1", payload: 0 });
+    dispatch({ type: "ADD_ITEM2", payload: 0 });
+    dispatch({ type: "ADD_ITEM3", payload: 0 });
+    dispatch({ type: "ADD_ITEM4", payload: 0 });
+  };
   return (
     <div>
       <form className="form" onSubmit={(e) => Submit(e)}>
@@ -92,14 +104,17 @@ const Submit = () => {
           readOnly
           className="form-input"
         />
-        <button className="back-btn">Visszaállitás</button>
+        <button className="back-btn" onClick={restart}>
+          Visszaállitás
+        </button>
         <input
           type="submit"
           className="send-btn"
           value="Elküldés"
+          disabled={!active}
           style={{
-            background: resultState === 1 ? "green" : "white",
-            color: resultState === 1 ? "white" : "black",
+            backgroundColor: buttonBackgroundColor,
+            pointerEvents: active ? "all" : "none",
           }}
         />
       </form>

@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useAppContext } from "./AppContext";
 import { FaInfo } from "react-icons/fa6";
 import { FiLink } from "react-icons/fi";
+import { FaRegCircleXmark } from "react-icons/fa6";
 import "../global.scss";
 
-const slider = () => {
+const slider = ({ position, setPosition }) => {
   const { state, dispatch } = useAppContext();
   const [sliderVal, setSliderVal] = useState(0);
-  const [position, setPosition] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [infoVisible, setInfoVisible] = useState(false);
 
   const numberOfSpots = 11; // Updated to include 0
   const wrapperWidth = 950;
@@ -78,18 +79,38 @@ const slider = () => {
         style={{ left: `${position}px` }}
       />
       <div className="price-wrap">
-        <p>{sliderVal * 250000}Ft</p>
+        <p>{state.shelf1[0]}Ft</p>
       </div>
       <div className="cloud">
         <img src="https://i.ibb.co/8jVs5SS/Vector-4.png" />
         <p>Autizmus alapitvány</p>
-        <div className="info">
+        <div className="info" onClick={() => setInfoVisible(true)}>
           <FaInfo />
         </div>
         <div className="link">
           <FiLink />
         </div>
       </div>
+      {infoVisible && (
+        <div className="infoDiv">
+          <div className="infoDiv-exit" onClick={() => setInfoVisible(false)}>
+            <FaRegCircleXmark />
+          </div>
+          <h2>Autizmus alapitvány</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad illo
+            quos rem eius voluptas, inventore quam architecto amet at animi a
+            aliquid quasi autem aspernatur suscipit harum laborum saepe
+            similique. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Itaque adipisci cum fugiat, voluptatibus iste possimus, eaque nam at
+            dolorum, blanditiis non! Natus mollitia magni at veritatis quasi
+            odio libero commodi. Lorem ipsum dolor sit, amet consectetur
+            adipisicing elit. Labore id iusto commodi dolorum quo fugit maxime,
+            a laboriosam itaque, libero praesentium explicabo tenetur! Saepe
+            neque necessitatibus soluta, molestias obcaecati cumque!
+          </p>
+        </div>
+      )}
     </div>
   );
 };

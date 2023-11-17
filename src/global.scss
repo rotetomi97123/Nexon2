@@ -145,6 +145,10 @@
   padding: 5px 20px;
   font-size: 25px;
   cursor: pointer;
+  &:hover {
+    opacity: 80%;
+    transition: 0.3s ease;
+  }
 }
 .info {
   width: 40px;
@@ -159,6 +163,12 @@
   position: absolute;
   top: 35%;
   left: 40px;
+  z-index: 1001;
+  &:hover {
+    opacity: 80%;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
 }
 .link {
   width: 40px;
@@ -186,4 +196,32 @@
 }
 .form-input {
   display: none;
+}
+.infoDiv {
+  position: fixed;
+  width: 25%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: #0d304be6;
+  padding: 20px 30px;
+  text-align: center;
+  border-radius: 20px;
+  h2 {
+    color: white;
+    margin-bottom: 10px;
+  }
+  p {
+    color: rgb(197, 231, 240);
+  }
+}
+.infoDiv-exit {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
 }

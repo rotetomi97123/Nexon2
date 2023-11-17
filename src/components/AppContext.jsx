@@ -1,10 +1,10 @@
 import React, { createContext, useReducer, useContext } from "react";
 
 const initialState = {
-  shelf1: [],
-  shelf2: [],
-  shelf3: [],
-  shelf4: [],
+  shelf1: [0],
+  shelf2: [0],
+  shelf3: [0],
+  shelf4: [0],
 };
 
 const AppContext = createContext();
