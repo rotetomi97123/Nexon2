@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useAppContext } from "./AppContext";
+import { Link } from "react-router-dom";
 
 const Submit = ({ setPosition, setPosition2, setPosition3, setPosition4 }) => {
   const { state, dispatch } = useAppContext();
-
+  const [isSend, setIsSend] = useState(false);
   function Submit(e) {
     const formEle = document.querySelector("form");
     e.preventDefault();
     console.log("Submitted");
     const formData = new FormData(formEle);
     fetch(
-      "https://script.google.com/macros/s/AKfycby2JyE9B5QRgWhEB8tjCKdnVLIiIyJmE-HWCcUwg77N42LfTT9h7s4i9VRg2pv9IlS3Jg/exec",
+      "https://script.google.com/macros/s/AKfycbzD2wFpjvwWXB0-WCr3raqvjzrIdW8WdTl54shGchQfuZS3m2FjIl3zfXsNL4OTLJ5N4Q/exec",
       {
         method: "POST",
         body: formData,
@@ -30,7 +31,7 @@ const Submit = ({ setPosition, setPosition2, setPosition3, setPosition4 }) => {
       setButtonBackgroundColor("grey");
       setActive(false);
     } else {
-      setButtonBackgroundColor("green");
+      setButtonBackgroundColor("#14a351");
       setActive(true);
     }
   }, [state.shelf1, state.shelf2, state.shelf3, state.shelf4]);
@@ -49,7 +50,7 @@ const Submit = ({ setPosition, setPosition2, setPosition3, setPosition4 }) => {
     <div>
       <form className="form" onSubmit={(e) => Submit(e)}>
         <input
-          value="LÁMPÁS ’92 KÖZHASZNÚ ALAPÍTVÁNY"
+          value="AUTIZMUS ALAPÍTVÁNY"
           name="Name1"
           type="text"
           readOnly
@@ -63,7 +64,7 @@ const Submit = ({ setPosition, setPosition2, setPosition3, setPosition4 }) => {
           className="form-input"
         />
         <input
-          value="AUTIZMUS ALAPÍTVÁNY"
+          value="LÁMPÁS ’92 KÖZHASZNÚ ALAPÍTVÁNY"
           name="Name2"
           type="text"
           readOnly
@@ -116,7 +117,13 @@ const Submit = ({ setPosition, setPosition2, setPosition3, setPosition4 }) => {
             backgroundColor: buttonBackgroundColor,
             pointerEvents: active ? "all" : "none",
           }}
+          onClick={() => setIsSend(true)}
         />
+        {isSend && (
+          <Link to={"/Data"}>
+            <input className="send-btn" type="button" value="Tovább" />
+          </Link>
+        )}
       </form>
     </div>
   );

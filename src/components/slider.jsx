@@ -11,7 +11,7 @@ const slider = ({ position, setPosition }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [infoVisible, setInfoVisible] = useState(false);
 
-  const numberOfSpots = 11; // Updated to include 0
+  const numberOfSpots = 11;
   const wrapperWidth = 950;
   const spotInterval = wrapperWidth / (numberOfSpots - 1);
   const spots = Array.from(
